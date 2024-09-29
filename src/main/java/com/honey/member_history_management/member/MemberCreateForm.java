@@ -11,12 +11,12 @@ public class MemberCreateForm {
 
     private String name;
 
-    private int age;
+    private Integer age;
 
     private String phoneNumber;
 
     @Builder
-    public MemberCreateForm(String id, String password, String name, int age, String phoneNumber) {
+    public MemberCreateForm(String id, String password, String name, Integer age, String phoneNumber) {
         this.id = id;
         this.password = password;
         this.name = name;
