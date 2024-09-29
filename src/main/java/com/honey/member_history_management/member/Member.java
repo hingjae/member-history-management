@@ -59,4 +59,8 @@ public class Member {
         this.createdBy = createdBy;
         this.updatedBy = updatedBy;
     }
+
+    public String getRoleName() {
+        return role.name();
+    }
 }

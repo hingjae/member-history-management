@@ -19,7 +19,7 @@
 
                 <!-- Check if the user is not authenticated -->
                 <li sec:authorize="isAnonymous()" class="login-item"><a th:href="@{/login}">로그인</a></li>
-                <li sec:authorize="isAnonymous()" class="signup-item"><a th:href="@{/users/new}">회원가입</a></li>
+                <li sec:authorize="isAnonymous()" class="signup-item"><a th:href="@{/members/create}">회원가입</a></li>
             </ul>
         </div>
     </div>

@@ -1,11 +1,10 @@
 package com.honey.member_history_management;
 
-import com.honey.member_history_management.member.Member;
-import com.honey.member_history_management.member.MemberCreateForm;
-import com.honey.member_history_management.member.MemberService;
+import com.honey.member_history_management.member.*;
 import jakarta.annotation.PostConstruct;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,23 +12,27 @@ import org.springframework.transaction.annotation.Transactional;
 @Component
 public class InitMemberData {
 
-    private final MemberService memberService;
+    private final MemberRepository memberRepository;
+
+    private final PasswordEncoder passwordEncoder;
 
     @PostConstruct
     @Transactional
     public void saveInitUser() {
         try {
-            Member defaultMember = memberService.findById("user1");
+            Member member = memberRepository.findById("admin")
+                    .orElseThrow(EntityNotFoundException::new);
         } catch (EntityNotFoundException e) {
-            memberService.create(
-                    MemberCreateForm.builder()
-                            .id("user1")
-                            .password("pw1")
-                            .name("honey")
-                            .age(27)
-                            .phoneNumber("010-1234-1234")
-                            .build()
-            );
+            Member admin = Member.builder()
+                    .id("admin")
+                    .password(passwordEncoder.encode("admin123"))
+                    .name("admin")
+                    .age(27)
+                    .phoneNumber("010-1234-1234")
+                    .role(Role.ADMIN)
+                    .build();
+
+            memberRepository.save(admin);
         }
     }
 }
