@@ -1,20 +1,20 @@
 package com.honey.member_history_management.member;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.envers.Audited;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
+@EntityListeners(AuditingEntityListener.class)
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
@@ -23,14 +23,19 @@ public class Member {
     @Id
     private String id;
 
+    @Audited
     private String password;
 
+    @Audited
     private String name;
 
+    @Audited
     private int age;
 
+    @Audited
     private String phoneNumber;
 
+    @Audited
     @Enumerated(value = EnumType.STRING)
     private Role role;
 
