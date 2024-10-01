@@ -18,7 +18,7 @@ local-db-up:
 	docker compose -f $(DOCKER_LOCAL_PATH)/docker-compose-local.yml --env-file .env up -d
 local-db-down:
 	@echo "Stopping and removing Docker containers, networks, and volumes"
-	docker compose -f $(DOCKER_LOCAL_PATH)/docker-compose-local.yml --env-file .env down
+	docker compose -f $(DOCKER_LOCAL_PATH)/docker-compose-local.yml --env-file .env down --volumes
 	@echo "Docker resources cleaned up successfully."
 
 	@echo "Removing ./docker/local/db directory"
@@ -37,7 +37,7 @@ test-db-up:
 	docker compose -f $(DOCKER_TEST_PATH)/docker-compose-test.yml --env-file .env up -d
 test-db-down:
 	@echo "Stopping and removing Docker containers, networks, and volumes"
-	docker compose -f $(DOCKER_TEST_PATH)/docker-compose-test.yml --env-file .env down
+	docker compose -f $(DOCKER_TEST_PATH)/docker-compose-test.yml --env-file .env down --volumes
 	@echo "Docker resources cleaned up successfully."
 
 	@echo "Removing ./docker/local/db directory"
