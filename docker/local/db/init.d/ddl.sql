@@ -14,7 +14,7 @@ CREATE TABLE `member` (
 CREATE TABLE `revinfo` (
     `rev` BIGINT AUTO_INCREMENT NOT NULL,
     `revtstmp` BIGINT NULL,
-    PRIMARY KEY (`rev`)
+    PRIMARY KEY (`REV`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `member_aud` (
