@@ -32,7 +32,7 @@ CREATE TABLE `revinfo` (
 ```sql
 CREATE TABLE `member_aud` (
     `id` VARCHAR(36) NOT NULL,      -- 엔티티 기본 키
-    `rev` BIGINT NOT NULL,          -- 리비전 번호 (revision 테이블에서 참조됨)
+    `rev` BIGINT NOT NULL,          -- 리비전 번호 (revinfo 테이블에서 참조됨)
     `revtype` TINYINT NOT NULL,     -- 리비전 유형: 0(추가), 1(수정), 2(삭제)
 
     `name` VARCHAR(100) NOT NULL,   -- 감사(audit)할 컬럼.
@@ -75,3 +75,4 @@ public class Member {
 ```
 
 - 감사(audit)할 필드에 `@Audited` 붙이기 
+- `@Audited` 필드가 수정됐을 때 envers가 리비전(변경내용)을 히스토리 테이블에 저장함.
