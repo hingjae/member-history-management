@@ -1,11 +1,10 @@
-package com.honey.member_history_management.member;
+package com.honey.member_history_management.member.domain;
 
+import com.honey.member_history_management.team.domain.Team;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -15,13 +14,18 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 
 @EntityListeners(AuditingEntityListener.class)
-@Getter
+@Getter @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Member {
 
     @Id
     private String id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "team_id")
+    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    private Team team;
 
     @Audited
     private String password;
@@ -52,8 +56,9 @@ public class Member {
     private String updatedBy;
 
     @Builder
-    public Member(String id, String password, String name, int age, String phoneNumber, Role role, LocalDateTime createdAt, LocalDateTime updatedAt, String createdBy, String updatedBy) {
+    public Member(String id, Team team, String password, String name, int age, String phoneNumber, Role role, LocalDateTime createdAt, LocalDateTime updatedAt, String createdBy, String updatedBy) {
         this.id = id;
+        this.team = team;
         this.password = password;
         this.name = name;
         this.age = age;

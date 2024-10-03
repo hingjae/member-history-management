@@ -1,19 +1,15 @@
-package com.honey.member_history_management.member.controller;
+package com.honey.member_history_management.member.api;
 
 import com.honey.member_history_management.FormDataEncoder;
-import com.honey.member_history_management.member.Member;
-import com.honey.member_history_management.member.MemberCreateForm;
-import com.honey.member_history_management.member.MemberService;
+import com.honey.member_history_management.member.domain.Member;
+import com.honey.member_history_management.member.dto.MemberCreateForm;
 import com.honey.member_history_management.security.CustomUserDetails;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;

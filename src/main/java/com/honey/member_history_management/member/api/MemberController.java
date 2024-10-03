@@ -1,9 +1,10 @@
-package com.honey.member_history_management.member.controller;
+package com.honey.member_history_management.member.api;
 
-import com.honey.member_history_management.member.MemberCreateForm;
-import com.honey.member_history_management.member.MemberService;
+import com.honey.member_history_management.member.dto.MemberCreateForm;
+import com.honey.member_history_management.team.api.TeamService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MemberController {
 
     private final MemberService memberService;
+    private final TeamService teamService;
 
     @GetMapping("/create")
-    public String createForm(@ModelAttribute("memberCreateForm") MemberCreateForm form) {
+    public String createForm(@ModelAttribute("memberCreateForm") MemberCreateForm form, Model model) {
+        model.addAttribute("teams", teamService.findAll());
         return "sign-up";
     }
 
