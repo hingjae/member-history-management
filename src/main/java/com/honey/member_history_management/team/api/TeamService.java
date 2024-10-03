@@ -19,6 +19,6 @@ public class TeamService {
 
     public Team findById(String id) {
         return teamRepository.findById(id)
-                .orElseThrow(EntityNotFoundException::new);
+                .orElse(null);
     }
 }

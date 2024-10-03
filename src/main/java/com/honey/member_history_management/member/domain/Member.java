@@ -73,4 +73,11 @@ public class Member {
     public String getRoleName() {
         return role.name();
     }
+
+    public void modify(Team team, String name, Integer age, String phoneNumber) {
+        this.team = team;
+        this.name = name;
+        this.age = age;
+        this.phoneNumber = phoneNumber;
+    }
 }

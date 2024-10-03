@@ -12,6 +12,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
+      org.hibernate.envers.store_data_at_delete: true
 logging:
   level:
     org.hibernate.SQL: debug

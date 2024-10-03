@@ -12,9 +12,14 @@
         <div class="home-link"><a th:href="@{/}">home</a></div>
         <div class="menu">
             <ul>
-                <li sec:authorize="hasAuthority('ADMIN')" class="admin-item">(admin)</li>
+                <li sec:authorize="hasAuthority('ADMIN')" class="admin-item">
+                    <a href="/admin/members">admin</a>
+                </li>
+                <li sec:authorize="hasAuthority('ADMIN')" class="signup-item">
+                    <a th:href="@{/members/create}">유저생성</a>
+                </li>
                 <!-- Check if the user is authenticated -->
-                <li sec:authorize="isAuthenticated()" class="user-item"><span th:text="${#authentication.principal.username}"></span></li>
+                <li sec:authorize="isAuthenticated()" class="user-item"><a th:href="@{'/members/' + ${#authentication.principal.username} + '/modify'}">내 정보 수정</a></li>
                 <li sec:authorize="isAuthenticated()" class="logout-item"><a th:href="@{/logout}">로그아웃</a></li>
 
                 <!-- Check if the user is not authenticated -->

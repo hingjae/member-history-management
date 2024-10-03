@@ -2,7 +2,7 @@ package com.honey.member_history_management.member.api;
 
 import com.honey.member_history_management.FormDataEncoder;
 import com.honey.member_history_management.member.domain.Member;
-import com.honey.member_history_management.member.dto.MemberCreateForm;
+import com.honey.member_history_management.member.dto.MemberForm;
 import com.honey.member_history_management.security.CustomUserDetails;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +35,7 @@ class MemberControllerTest {
     @Transactional
     @Test
     public void auditCreateBy() throws Exception {
-        MemberCreateForm form = MemberCreateForm.builder()
+        MemberForm form = MemberForm.builder()
                 .id("user1")
                 .password("pw1")
                 .name("foo")

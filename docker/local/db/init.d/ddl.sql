@@ -29,11 +29,11 @@ CREATE TABLE `member_aud` (
     `rev` BIGINT NOT NULL,
     `revtype` TINYINT NOT NULL,
 
-    `password` VARCHAR(255) NOT NULL,
-    `name` VARCHAR(100) NOT NULL,
-    `age` INT NOT NULL,
+    `password` VARCHAR(255),
+    `name` VARCHAR(100),
+    `age` INT,
     `phone_number` VARCHAR(20),
-    `role` VARCHAR(50) NOT NULL,
+    `role` VARCHAR(50),
     `team_id` VARCHAR(36),
 
     PRIMARY KEY (`id`, `rev`),
