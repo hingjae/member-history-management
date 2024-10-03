@@ -1,13 +1,17 @@
 package com.honey.member_history_management;
 
-import com.honey.member_history_management.member.*;
+import com.honey.member_history_management.member.domain.Member;
+import com.honey.member_history_management.member.domain.MemberRepository;
+import com.honey.member_history_management.member.domain.Role;
 import jakarta.annotation.PostConstruct;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+@Profile("local")
 @RequiredArgsConstructor
 @Component
 public class InitMemberData {

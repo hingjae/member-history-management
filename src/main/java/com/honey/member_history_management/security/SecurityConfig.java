@@ -1,6 +1,6 @@
 package com.honey.member_history_management.security;
 
-import com.honey.member_history_management.member.MemberRepository;
+import com.honey.member_history_management.member.domain.MemberRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -17,7 +17,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests(auth -> auth
                         .requestMatchers("/js/**", "/css/**").permitAll()
-                        .requestMatchers("/login", "members/**").permitAll()
+                        .requestMatchers("/", "/login", "/members/**").permitAll()
                         .requestMatchers("/admin/**").hasAnyAuthority("ADMIN")
                         .anyRequest().authenticated())
                 .formLogin(configurer -> configurer
