@@ -1,6 +1,6 @@
 package com.honey.member_history_management.security;
 
-import com.honey.member_history_management.member.Member;
+import com.honey.member_history_management.member.domain.Member;
 import lombok.Builder;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
@@ -8,8 +8,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 @Getter
