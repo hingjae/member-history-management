@@ -21,6 +21,7 @@ CREATE TABLE `member` (
 CREATE TABLE `revinfo` (
     `rev` BIGINT AUTO_INCREMENT NOT NULL,
     `revtstmp` BIGINT NULL,
+    `updated_by` VARCHAR(36) NULL,
     PRIMARY KEY (`rev`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
