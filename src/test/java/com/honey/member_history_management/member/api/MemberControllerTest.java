@@ -32,7 +32,6 @@ class MemberControllerTest {
     @Autowired
     private MemberService memberService;
 
-    @Transactional
     @Test
     public void auditCreateBy() throws Exception {
         MemberForm form = MemberForm.builder()
@@ -41,6 +40,7 @@ class MemberControllerTest {
                 .name("foo")
                 .age(20)
                 .phoneNumber("010-1234-1234")
+                .teamId("")
                 .build();
 
         mockMvc.perform(post("/members/create")
