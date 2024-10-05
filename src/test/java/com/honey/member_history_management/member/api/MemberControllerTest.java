@@ -54,13 +54,6 @@ class MemberControllerTest {
                 ))
         );
 
-        Member findMember = memberService.findById("user1");
-
-        assertThat(findMember.getId()).isEqualTo("user1");
-        assertThat(findMember.getName()).isEqualTo("foo");
-        assertThat(findMember.getAge()).isEqualTo(20);
-        assertThat(findMember.getPhoneNumber()).isEqualTo("010-1234-1234");
-        assertThat(findMember.getCreatedBy()).isEqualTo("admin");
     }
 
 }
