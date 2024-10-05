@@ -1,8 +1,9 @@
-package com.honey.member_history_management.envers;
+package com.honey.member_history_management.envers.revision;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.envers.RevisionEntity;
 import org.hibernate.envers.RevisionNumber;
 import org.hibernate.envers.RevisionTimestamp;
@@ -21,9 +22,11 @@ public class Revinfo {
     @RevisionNumber
     private Long rev;
 
+    @Column
     @RevisionTimestamp
     private Long revtstmp;
 
+    @Column
     @Setter
     private String updatedBy;
 

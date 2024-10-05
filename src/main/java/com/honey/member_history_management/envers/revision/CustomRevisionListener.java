@@ -1,4 +1,4 @@
-package com.honey.member_history_management.envers;
+package com.honey.member_history_management.envers.revision;
 
 import com.honey.member_history_management.security.CustomUserDetails;
 import org.hibernate.envers.RevisionListener;
