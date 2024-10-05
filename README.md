@@ -76,3 +76,27 @@ public class Member {
 
 - 감사(audit)할 필드에 `@Audited` 붙이기 
 - `@Audited` 필드가 수정됐을 때 envers가 리비전(변경내용)을 히스토리 테이블에 저장함.
+
+---
+### AuditReader()
+
+- Hibernate Envers에서 제공하는 인터페이스
+- 리비전을 조회하는 쿼리를 만들 때 사용한다.
+- 조건, 정렬, 페이징 지원
+
+### RevisionRepository
+```java
+@NoRepositoryBean
+public interface RevisionRepository<T, ID, N extends Number & Comparable<N>> extends Repository<T, ID> {
+    Optional<Revision<N, T>> findLastChangeRevision(ID id);
+
+    Revisions<N, T> findRevisions(ID id);
+
+    Page<Revision<N, T>> findRevisions(ID id, Pageable pageable);
+
+    Optional<Revision<N, T>> findRevision(ID id, N revisionNumber);
+}
+```
+- Spring Data Envers 에서 제공하는 인터페이스
+- 엔티티 히스토리를 편리하게 조회할 수 있는 기본적인 메서드를 제공.
+- 조건, 정렬, 페이징 지원
