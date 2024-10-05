@@ -1,5 +1,6 @@
 package com.honey.member_history_management.envers.repository;
 
+import com.honey.member_history_management.envers.repository.dto.RevisionWithMetadata;
 import com.honey.member_history_management.member.domain.Member;
 import com.honey.member_history_management.member.domain.MemberRepository;
 import org.junit.jupiter.api.Test;
@@ -32,7 +33,7 @@ class MemberRevisionRepositoryTest {
 
         memberRepository.save(member);
 
-        List<Member> all = memberRevisionRepository.findAll();
+        List<RevisionWithMetadata<Member>> all = memberRevisionRepository.findAll();
 
         System.out.println(all);
     }

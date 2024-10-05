@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Member Revisions</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/top-bar.css">
+    <style>
+        .revision-table {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .revision-table th, .revision-table td {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{fragment/top-bar :: topbar}"></div>
+<div class="container">
+    <h2 class="mt-4">Member Revision History</h2>
+
+    <!-- 검색바 및 검색 조건 -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <form th:object="${searchParam}" class="form-inline" method="get">
+                <div class="form-group mr-2">
+                    <select class="form-control" name="searchType" th:field="*{searchType}">
+                        <option  value="ID">아이디</option>
+                        <option value="NAME">이름</option>
+                    </select>
+                </div>
+                <div class="form-group mr-2">
+                    <input th:field="*{keyword}" type="text" class="form-control" name="keyword" placeholder="검색어를 입력하세요">
+                </div>
+                <button type="submit" class="btn btn-primary">검색</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Member 리비전 목록 테이블 -->
+    <table class="table table-bordered table-hover revision-table">
+        <thead class="thead-dark">
+        <tr>
+            <th>REV</th>
+            <th>Event</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Phone Number</th>
+            <th>Team</th>
+            <th>수정자</th>
+            <th>수정일시</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="memberRevision : ${memberRevisions}">
+            <td th:text="${memberRevision.revinfo.rev}">1</td>
+            <td>
+                <span th:each="event : ${memberRevision.revisionEvents}"
+                      class="badge ml-1"
+                      th:classappend="${event.badge}"
+                      th:text="${event.event}"></span>
+            </td>
+            <td th:text="${memberRevision.member.id}">1</td>
+            <td th:text="${memberRevision.member.name}">John Doe</td>
+            <td th:text="${memberRevision.member.age}">25</td>
+            <td th:text="${memberRevision.member.phoneNumber}">010-1234-5678</td>
+            <td th:text="${memberRevision.member.teamName}">Team A</td>
+            <td th:text="${memberRevision.revinfo.updatedBy}">admin</td>
+            <td th:text="${#temporals.format(memberRevision.revinfo.updatedAt, 'yyyy-MM-dd HH:mm:ss')}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

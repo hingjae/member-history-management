@@ -24,22 +24,21 @@ public class Member {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id")
-    @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+    @Audited(withModifiedFlag = true, targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
     private Team team;
 
-    @Audited
+    @Audited(withModifiedFlag = true)
     private String password;
 
-    @Audited
+    @Audited(withModifiedFlag = true)
     private String name;
 
-    @Audited
+    @Audited(withModifiedFlag = true)
     private int age;
 
-    @Audited
+    @Audited(withModifiedFlag = true)
     private String phoneNumber;
 
-    @Audited
     @Enumerated(value = EnumType.STRING)
     private Role role;
 

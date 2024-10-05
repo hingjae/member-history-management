@@ -21,6 +21,7 @@ CREATE TABLE `member` (
 CREATE TABLE `revinfo` (
     `rev` BIGINT AUTO_INCREMENT NOT NULL,
     `revtstmp` BIGINT NULL,
+    `updated_by` VARCHAR(36) NULL,
     PRIMARY KEY (`rev`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -30,11 +31,17 @@ CREATE TABLE `member_aud` (
     `revtype` TINYINT NOT NULL,
 
     `password` VARCHAR(255),
+    `password_mod` TINYINT(1),
     `name` VARCHAR(100),
+    `name_mod` TINYINT(1),
     `age` INT,
+    `age_mod` TINYINT(1),
     `phone_number` VARCHAR(20),
+    `phone_number_mod` TINYINT(1),
     `role` VARCHAR(50),
+    `role_mod` TINYINT(1),
     `team_id` VARCHAR(36),
+    `team_mod` TINYINT(1),
 
     PRIMARY KEY (`id`, `rev`),
     CONSTRAINT `fk_member_aud_revinfo` FOREIGN KEY (`rev`) REFERENCES `revinfo`(`rev`)
