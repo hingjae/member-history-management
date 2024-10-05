@@ -106,7 +106,7 @@ public interface RevisionRepository<T, ID, N extends Number & Comparable<N>> ext
 
 2. [spring-data-envers : 엔티티 히스토리 조회하기](https://velog.io/@honey153/%EC%82%AC%EC%9A%A9%EC%9E%90-%ED%9E%88%EC%8A%A4%ED%86%A0%EB%A6%AC-%EA%B4%80%EB%A6%AC-2)
 
-### 
+
 ![img.png](docs/envers13.png)
 ![img.png](docs/envers14.png)
 ![img.png](docs/envers15.png)
