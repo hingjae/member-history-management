@@ -100,3 +100,9 @@ public interface RevisionRepository<T, ID, N extends Number & Comparable<N>> ext
 - Spring Data Envers 에서 제공하는 인터페이스
 - 엔티티 히스토리를 편리하게 조회할 수 있는 기본적인 메서드를 제공.
 - 조건, 정렬, 페이징 지원
+
+---
+1. [spring-data-envers : 엔티티 히스토리 관리](https://velog.io/@honey153/%EC%82%AC%EC%9A%A9%EC%9E%90-%ED%9E%88%EC%8A%A4%ED%86%A0%EB%A6%AC-%EA%B4%80%EB%A6%AC-1)
+
+2. [spring-data-envers : 엔티티 히스토리 조회하기](https://velog.io/@honey153/%EC%82%AC%EC%9A%A9%EC%9E%90-%ED%9E%88%EC%8A%A4%ED%86%A0%EB%A6%AC-%EA%B4%80%EB%A6%AC-2)
+
